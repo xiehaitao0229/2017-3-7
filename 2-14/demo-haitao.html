@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url("images/bg.jpg") no-repeat;
+            /* 兼容浏览器 */
+            -webkit-background-size: cover;
+            background-size: cover;
+            /* 兼容浏览器 */
+            overflow: hidden;
+        }
+        .dengziqi{
+            width: 235px;
+            height: 235px;
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            perspective: 1000px;/*视距*/
+        }
+        .dengziqi .scene{
+            transform-style: preserve-3d;   /*子元素为3d模式*/
+            width:240px;
+            height:240px;
+            transform-origin: 50%;  /* 设置旋转的中心点 */
+            /* 为了兼容性 */
+            -webkit-animation: slide 20s linear infinite;   /*  动画参数，动画名，做一次动画需要的时间，速度是匀速 ，无限循环播放*/
+            animation: slide 20s linear infinite;
+            /* 为了兼容性 */
+        }
+        .dengziqi .scene ul li{
+            list-style:none;
+            width:235px;
+            height:235px;
+            border:5px double yellow;
+            position:absolute;
+        }
+        .dengziqi .scene ul li img{
+            width:235px;
+            height:235px;
+        }
+        .dengziqi .scene ul li:nth-child(1){
+            transform: rotateY(0deg) translateZ(260px);
+        }
+        .dengziqi .scene ul li:nth-child(2){
+            transform: rotateY(60deg) translateZ(260px);
+        }
+        .dengziqi .scene ul li:nth-child(3){
+            transform: rotateY(120deg) translateZ(260px);
+        }
+        .dengziqi .scene ul li:nth-child(4){
+            transform: rotateY(180deg) translateZ(260px);
+        }
+        .dengziqi .scene ul li:nth-child(5){
+            transform: rotateY(240deg) translateZ(260px);
+        }
+        .dengziqi .scene ul li:nth-child(6){
+            transform: rotateY(300deg) translateZ(260px);
+        }
+
+        /* slide动画开始 */
+        @keyframes slide {
+           from{
+               transform: rotateY(0deg);
+           }to{
+                transform: rotateY(360deg);
+                  }
+        }
+        @-webkit-keyframes slide {
+            from{
+                transform: rotateY(0deg);
+            }to{
+                 transform: rotateY(360deg);
+             }
+        }
+        /* slide动画结束 */
+        .dengziqi .scene:hover{
+            /* 当滑到图片的时候，动画停止 */
+            -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+        }
+        .dengziqi .scene li:hover img{
+            transform: scale(1.3);
+            border: 5px solid rgba(0,0,0,0.5);
+
+        }
+        .xin{
+            position: fixed;
+            left: 10px;
+            bottom: 60px;
+            opacity: 0;
+            /* 为了兼容性 */
+            -webkit-animation: xin 20s linear infinite;
+            animation: xin 20s linear infinite;
+        }
+        @-webkit-keyframes xin {
+            0%{opacity:1;}/*从什么时候开始*/
+            20%{bottom:300px; left:300px;opacity:0;}
+            40%{bottom:460px; left:600px;opacity:1;}
+            60%{bottom:300px; left:900px;opacity:0;}
+            80%{bottom:50px; left:1100px;opacity:1;}
+            100%{bottom:-150px; left:760px;opacity:0;}
+        }
+        @keyframes xin {
+            0%{opacity:1;}/*从什么时候开始*/
+            20%{bottom:300px; left:300px;opacity:0;}
+            40%{bottom:460px; left:600px;opacity:1;}
+            60%{bottom:300px; left:900px;opacity:0;}
+            80%{bottom:50px; left:1100px;opacity:1;}
+            100%{bottom:-150px; left:760px;opacity:0;}
+        }
+        audio{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="dengziqi">
+    <!-- 音乐 -->
+    <audio src="Together.mp3" controls="controls" autoplay loop="loop"></audio>
+    <div class="scene">
+        <ul>
+            <li><img src="images/1.jpg" alt=""/></li>
+            <li><img src="images/2.jpg" alt=""/></li>
+            <li><img src="images/3.jpg" alt=""/></li>
+            <li><img src="images/4.jpg" alt=""/></li>
+            <li><img src="images/5.jpg" alt=""/></li>
+            <li><img src="images/6.jpg" alt=""/></li>
+        </ul>
+    </div>
+</div>
+<div class="xin">
+    <img src="images/xin.png" alt=""/>
+</div>
+</body>
+</html>
